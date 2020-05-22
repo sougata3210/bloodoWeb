@@ -1,4 +1,4 @@
-<div class="app-root-style">
+<div [ngClass]="{'app-root-style': true, 'blooddo-dark-theme': isDarkTheme}">
   <mat-sidenav-container #sidenav class="sidenav-root-container" autosize>
     <mat-sidenav [mode]="isMobileView?'over':'side'" [opened]="!isMobileView" [disableClose]="!isMobileView" #sidenav
       [ngClass]="{'sidenav-main': showLinkNames, 'sidenav-main-hidden': !showLinkNames, 'mat-typography': true}">
@@ -45,8 +45,8 @@
         </div>
       </div>
       <div class="p-l-10 p-r-10">
-        <button mat-raised-button color="primary" class="flex-full">
-          Request Blood
+        <button mat-raised-button [color]="isDarkTheme ? 'accent' :'primary'" class="flex-full">
+          <span class="school-font size-16 weight-400">Request Blood</span>
           <span class="spacer"></span>
           <mat-icon svgIcon="plus"></mat-icon>
         </button>
@@ -115,6 +115,10 @@
             <mat-icon svgIcon="bell-outline"></mat-icon>
           </button>
         </div>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="toggleDarkTheme()">
+          <mat-icon svgIcon="theme-light-dark"></mat-icon>
+        </button>
       </mat-toolbar>
       <router-outlet class="mat-typography"></router-outlet>
     </div>

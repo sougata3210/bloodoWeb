@@ -7,6 +7,7 @@ import { isNullOrUndefined } from 'src/app/utils/app.utils';
 import { environment } from 'src/environments/environment';
 import { AbstractHttpService } from '../base/abstract-http.service';
 import { LoggerService } from '../log/logger.service';
+import { AppConstants } from 'src/app/utils/app.constant';
 
 @Injectable({
   providedIn: 'root'
@@ -39,6 +40,15 @@ export class StorageService extends AbstractHttpService {
     this.logger.debug(this.className, `getCookieData() Data`);
     // const data: T = this.encryptDecryptService.decryptData<T>(this.cookieStorageService.get(param));
     const data: T = this.cookieStorageService.get(param);
+    return data;
+  }
+
+  setDarkTheme(val: boolean) {
+    this.localStorageService.set(AppConstants.IS_DARK_THEME, val);
+  }
+
+  getDarkTheme<T>(): T {
+    const data: T = this.localStorageService.get(AppConstants.IS_DARK_THEME);
     return data;
   }
 

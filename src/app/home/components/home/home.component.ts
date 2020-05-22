@@ -47,6 +47,7 @@ export class HomeComponent extends BaseComponent implements OnInit, OnDestroy {
   rootLogoUrl: string;
   menuState: boolean;
   showLinkNames: boolean;
+  isDarkTheme: boolean;
   constructor(
     private storage: StorageService,
     public dataHandler: DataHandlerService,
@@ -59,6 +60,7 @@ export class HomeComponent extends BaseComponent implements OnInit, OnDestroy {
     super('HomeComponent', snackBar, logger);
     this.config = configLoader.getConfigData();
     this.showLinkNames = true;
+    this.isDarkTheme = this.storage.getDarkTheme();
   }
 
   ngOnInit(): void {
@@ -157,5 +159,10 @@ export class HomeComponent extends BaseComponent implements OnInit, OnDestroy {
 
   removedSelectedSchoolYear() {
     // this.academicOrient.selectCurrentYear(this.userProfile.schoolYear);
+  }
+
+  toggleDarkTheme(): void {
+    this.isDarkTheme = !this.isDarkTheme;
+    this.storage.setDarkTheme(this.isDarkTheme);
   }
 }

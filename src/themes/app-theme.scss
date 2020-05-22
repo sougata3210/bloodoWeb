@@ -47,8 +47,8 @@ $blooddo-app-theme: mat-light-theme($blooddo-app-primary, $blooddo-app-accent, $
 
 // Secondary Theme
 .blooddo-dark-theme {
-  $blooddo-dark-primary: mat-palette($mat-blue-grey, 500);
-  $blooddo-dark-accent: mat-palette($mat-pink, 500);
+  $blooddo-dark-primary: mat-palette($mat-blue-grey, 900);
+  $blooddo-dark-accent: mat-palette($mat-amber, 500);
   $blooddo-dark-warn: mat-palette($mat-deep-orange);
   $blooddo-dark-theme: mat-dark-theme($blooddo-dark-primary, $blooddo-dark-accent, $blooddo-dark-warn);
   @include angular-material-theme($blooddo-dark-theme);
