@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { LogEntry } from './log-entry';
 import { LogLevel } from './log-level.enum';
 import { LogPublisher } from './log-publisher';
@@ -13,7 +13,7 @@ export class LoggerService {
   logWithDate = true;
   publishers: LogPublisher[];
 
-  constructor(private publisherService: LogPublishersService) {
+  constructor(@Inject(LogPublishersService) private publisherService: LogPublishersService) {
     this.publishers = this.publisherService.publishers;
   }
 
@@ -51,7 +51,7 @@ export class LoggerService {
       entry.logWithDate = this.logWithDate;
       // console.log(entry.buildLogString());
       for (const logger of this.publishers) {
-        logger.log(entry).subscribe(response => {/* console.log(response) */});
+        logger.log(entry).subscribe(response => {/* console.log(response) */ });
       }
     }
   }

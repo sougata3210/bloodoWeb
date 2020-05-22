@@ -9,7 +9,6 @@ import { HttpLoaderService } from '../../services/http/http-loader.service';
   styleUrls: ['./http-loader.component.scss']
 })
 export class HttpLoaderComponent implements OnInit, OnDestroy {
-
   show = false;
   private subscription: Subscription;
   constructor(

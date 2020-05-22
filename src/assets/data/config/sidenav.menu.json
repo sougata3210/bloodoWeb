@@ -1,0 +1,56 @@
+[
+  {
+    "icon": "home",
+    "name": "Home",
+    "isShow": false,
+    "userRole": [],
+    "href": "dashboard",
+    "loginType": "adminapp",
+    "isChildAvailable": false,
+    "child": [
+      {
+        "userRole": [],
+        "icon": "forum",
+        "name": "SIDEBAR.MENU.VIEW_RESPOND",
+        "href": "viewRespond",
+        "loginType": "adminapp"
+      }
+    ]
+  },
+  {
+    "icon": "format-list-bulleted",
+    "name": "Donors",
+    "isShow": false,
+    "userRole": [],
+    "href": "donors",
+    "loginType": "adminapp",
+    "isChildAvailable": false
+  },
+  {
+    "icon": "calendar-star",
+    "name": "Events",
+    "isShow": false,
+    "userRole": [],
+    "href": "events",
+    "loginType": "adminapp",
+    "isChildAvailable": false
+  },
+  {
+    "icon": "dots-horizontal",
+    "name": "Community",
+    "isShow": false,
+    "userRole": [],
+    "href": "dashboard",
+    "loginType": "adminapp",
+    "isChildAvailable": true,
+    "child": [
+      {
+        "userRole": [],
+        "icon": "frequently-asked-questions",
+        "name": "FAQ",
+        "href": "frequently-asked-questions",
+        "loginType": "adminapp"
+      }
+    ]
+  }
+]

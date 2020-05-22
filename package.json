@@ -25,9 +25,9 @@
     "@angular/platform-browser-dynamic": "~9.1.7",
     "@angular/router": "~9.1.7",
     "@angular/service-worker": "~9.1.7",
+    "@efaps/ngx-store": "^3.0.1",
     "firebase": "^7.14.4",
     "moment": "^2.25.3",
-    "ngx-store": "^2.1.0",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

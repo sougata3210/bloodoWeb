@@ -1,0 +1,122 @@
+<div class="app-root-style">
+  <mat-sidenav-container #sidenav class="sidenav-root-container" autosize>
+    <mat-sidenav [mode]="isMobileView?'over':'side'" [opened]="!isMobileView" [disableClose]="!isMobileView" #sidenav
+      [ngClass]="{'sidenav-main': showLinkNames, 'sidenav-main-hidden': !showLinkNames, 'mat-typography': true}">
+      <mat-toolbar class="default-theme" color="primary">
+        <div class="p-l-0 ellipsis flex-full" fxLayout="row" fxLayoutAlign="start center">
+          <a [routerLink]="rootLogoUrl" class="no-underline cursor-pointer valign-center p-r-20 col-accent">
+            <div class="logo-size">
+              <mat-icon svgIcon="app-logo" [inline]="true"></mat-icon>
+            </div>
+          </a>
+          <span class="spacer"></span>
+          <button mat-icon-button *ngIf="showLinkNames">
+            <mat-icon svgIcon="bell-outline"></mat-icon>
+          </button>
+        </div>
+      </mat-toolbar>
+      <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px" class="p-l-10 p-t-10 p-b-10">
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <img class="profile-icon-dark" [src]="'../assets/images/custom/avatar_circle_grey_64dp.png'"
+          onerror="this.src='../assets/images/custom/avatar_circle_grey_64dp.png';this.onerror='';"
+          [alt]="userProfile?.name">
+          <span class="spacer"></span>
+          <button class="profile-menu" mat-icon-button #menuTrigger="matMenuTrigger" (click)="menuTrigger.openMenu()"
+            [mat-menu-trigger-for]="profile">
+            <mat-icon svgIcon="dots-vertical"></mat-icon>
+          </button>
+          <mat-menu #profile="matMenu" yPosition="below">
+            <div>
+              <button mat-menu-item [routerLink]="myProfileUrl">
+                <mat-icon>person</mat-icon>
+                <span>My Profile</span>
+              </button>
+              <button mat-menu-item (click)="logoutDialog()">
+                <mat-icon>power_settings_new</mat-icon>
+                <span>Logout</span>
+              </button>
+            </div>
+          </mat-menu>
+        </div>
+        <span class="school-font size-14 weight-500" *ngIf="showLinkNames">{{userProfile?.name}}</span>
+        <div fxLayout="row" fxLayoutAlign="start center">
+          <span class="school-font size-12 weight-400 m-t--5 ellipsis"
+            *ngIf="showLinkNames">{{userProfile?.emailId}}</span>
+        </div>
+      </div>
+      <div class="p-l-10 p-r-10">
+        <button mat-raised-button color="primary" class="flex-full">
+          Request Blood
+          <span class="spacer"></span>
+          <mat-icon svgIcon="plus"></mat-icon>
+        </button>
+      </div>
+
+      <mat-nav-list style="overflow-y: auto;" [ngStyle]="{'height':  showLinkNames ? '65vh' : '71vh'}">
+        <div *ngFor="let link of dataHandler.sidenavMenu" [@slideInOut]="link.show ? 'out' : 'in'">
+          <span *ngIf="checkUrlAccessibleOrNot(link?.userRole, link?.loginType)">
+            <ng-container *ngIf="link.isChildAvailable; else elseTemplate">
+              <mat-list-item role="link" #links [ngClass]="{'bg-amber-gradient': routeIsActive(link?.href)}"
+                (click)="showHideNavMenu(link)">
+                <mat-icon class="component-viewer-nav" matListIcon svgIcon="{{link.icon}}"></mat-icon>
+                <a matLine [matTooltip]="link.name" matTooltipPosition="after">
+                  {{link.name}}</a>
+                <mat-icon *ngIf="!link.isShow">add</mat-icon>
+                <mat-icon *ngIf="link.isShow">remove</mat-icon>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+              <span *ngIf="link.isShow">
+                <div *ngFor="let clink of link.child; let last = last;">
+                  <mat-list-item *ngIf="checkUrlAccessibleOrNot(clink?.userRole, link?.loginType)" role="link" #links
+                    routerLinkActive="active-link" routerLink="{{clink.href}}" (click)="onLinkClick()" class="p-l-10">
+                    <mat-icon class="component-viewer-nav" matListIcon svgIcon="{{clink.icon}}"
+                      [matTooltip]="clink.name" matTooltipPosition="after"></mat-icon>
+                    <a matLine [matTooltip]="clink.name" matTooltipPosition="after">
+                      {{clink.name}}</a>
+                  </mat-list-item>
+                  <mat-divider></mat-divider>
+                </div>
+              </span>
+            </ng-container>
+            <ng-template #elseTemplate>
+              <mat-list-item role="link" #links routerLinkActive="active-link" routerLink="{{link.href}}"
+                (click)="onLinkClick()">
+                <mat-icon class="component-viewer-nav" matListIcon svgIcon="{{link.icon}}" [matTooltip]="link.name"
+                  matTooltipPosition="after"></mat-icon>
+                <a matLine [matTooltip]="link.name" matTooltipPosition="after" *ngIf="showLinkNames">
+                  {{ link.name}}</a>
+              </mat-list-item>
+              <mat-divider></mat-divider>
+            </ng-template>
+          </span>
+        </div>
+      </mat-nav-list>
+      <!-- <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="showLinkNames = !showLinkNames">
+          <mat-icon [svgIcon]="showLinkNames ? 'arrow-left-drop-circle-outline' : 'arrow-right-drop-circle-outline'"></mat-icon>
+        </button>
+      </div> -->
+    </mat-sidenav>
+    <!--***** html part of page *****-->
+    <div class="my-content" id="header-editor-panel">
+      <mat-toolbar class="mat-elevation-z8" color="primary" style="min-height:64px;">
+        <button *ngIf="isMobileView" type="button" mat-icon-button (click)="sidenav.open()">
+          <mat-icon svgIcon="menu"></mat-icon>
+        </button>
+        <div class="p-l-10 ellipsis flex-full" fxLayout="row" fxLayoutAlign="start center" *ngIf="isMobileView">
+          <a [routerLink]="rootLogoUrl" class="no-underline cursor-pointer valign-center p-r-20 col-accent">
+            <div class="logo-size">
+              <mat-icon svgIcon="app-logo" [inline]="true"></mat-icon>
+            </div>
+          </a>
+          <span class="spacer"></span>
+          <button mat-icon-button>
+            <mat-icon svgIcon="bell-outline"></mat-icon>
+          </button>
+        </div>
+      </mat-toolbar>
+      <router-outlet class="mat-typography"></router-outlet>
+    </div>
+  </mat-sidenav-container>
+</div>

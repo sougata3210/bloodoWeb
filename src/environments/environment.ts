@@ -4,7 +4,12 @@
 
 export const environment = {
   production: false,
-  LOGIN_PERSISTENCE_NAME: '_user_login'
+  LOGIN_PERSISTENCE_NAME: '_user_login',
+  CONFIG_LOCATION: '../assets/data/config/config.json',
+  FALLBACK_PROFILE_IMAGE_URL: 'https://cdn.browshot.com/static/images/not-found.png',
+  MENU_LOCATION: '../assets/data/config/sidenav.menu.json',
+  LOG_LEVEL: 0,
+  LOG_LOADER_URL: '../assets/data/config/log-loader.json',
 };
 
 /*

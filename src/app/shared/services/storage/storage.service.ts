@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
-import { CookiesStorageService, LocalStorageService, SessionStorageService } from 'ngx-store';
+import { CookiesStorageService, LocalStorageService, SessionStorageService } from '@efaps/ngx-store';
 import { isNullOrUndefined } from 'src/app/utils/app.utils';
 import { environment } from 'src/environments/environment';
 import { AbstractHttpService } from '../base/abstract-http.service';

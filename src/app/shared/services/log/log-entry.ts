@@ -12,9 +12,9 @@ export class LogEntry {
     let ret = '';
 
     if (this.logWithDate) {
-      ret = `${new DatePipe('en').transform(new Date(), 'yyyy-MM-dd HH:mm:ss.ms')} `;
+      ret = `${new DatePipe('en').transform(new Date(), 'dd-MMM-yyyy HH:mm:ss.ms')} `;
     }
-    ret += `${LogLevel[this.level].toLocaleUpperCase()} [ ${this.classname} ]`;
+    ret += `[${LogLevel[this.level].toLocaleUpperCase()}] (${this.classname})`;
     ret += ': ' + this.message;
     if (this.extraInfo.length) {
       ret += ' - Extra Info: '

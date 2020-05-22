@@ -1,7 +1,8 @@
 import { Observable, merge, of, fromEvent } from 'rxjs';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { LoggerService } from '../../services/log/logger.service';
+import { Inject } from '@angular/core';
 
 export abstract class BaseComponent {
   onlineOffline: Observable<boolean>;
@@ -13,9 +14,9 @@ export abstract class BaseComponent {
     .concat(this.allowedWordFileType)
     .concat(this.allowedPdfFileType);
   constructor(
-    protected className: string,
-    protected snackBar: MatSnackBar,
-    protected logger: LoggerService,
+    @Inject(String) protected className: string,
+    @Inject(MatSnackBar) protected snackBar: MatSnackBar,
+    @Inject(LoggerService) protected logger: LoggerService,
     // protected locale: LocaleService,
   ) {
     this.onlineOffline = merge(of(navigator.onLine),

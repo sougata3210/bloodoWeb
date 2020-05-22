@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 import { Observable, of } from 'rxjs';
 import { LoggerService } from '../log/logger.service';
@@ -8,13 +8,11 @@ import { LoggerService } from '../log/logger.service';
   providedIn: 'root'
 })
 export abstract class AbstractHttpService {
-
   protected constructor(
-    protected className: string,
-    protected http: HttpClient,
-    protected snackBar: MatSnackBar,
-    protected logger: LoggerService) {
-    this.className = className;
+    @Inject(String) protected className: string,
+    @Inject(HttpClient) protected http: HttpClient,
+    @Inject(MatSnackBar) protected snackBar: MatSnackBar,
+    @Inject(LoggerService) protected logger: LoggerService) {
   }
 
   protected handleError<T>(uri: string, result?: T) {

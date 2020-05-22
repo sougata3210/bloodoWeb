@@ -1,16 +1,14 @@
-import { Observable, of } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-
-import { AbstractHttpService } from '../http/abstract-http.service';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Observable, of } from 'rxjs';
 import { LogConsole } from './log-console';
 import { LogLoaderService } from './log-loader.service';
 import { LogLocalStorage } from './log-local-storage';
 import { LogPublisher } from './log-publisher';
 import { LogPublisherConfig } from './log-publisher-config';
 import { LogWebApi } from './log-web-api';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 
 @Injectable({
   providedIn: 'root'
