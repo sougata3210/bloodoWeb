@@ -1,0 +1,22 @@
+/* Red styling */
+
+.mat-button.mat-red,
+.mat-stroked-button.mat-red {
+    color: rgb(216, 67, 21);
+}
+.mat-button.mat-red:hover,
+.mat-stroked-button.mat-red:hover {
+  background-color: #f0fff3;
+}
+
+.mat-raised-button.mat-red,
+.mat-flat-button.mat-red,
+.mat-fab.mat-red,
+.mat-mini-fab.mat-red {
+  color: #f0fff3;
+  background-color: rgb(216, 68, 23);
+}
+
+.mat-icon-button.mat-red {
+  color:rgb(216, 67, 21);
+}

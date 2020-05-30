@@ -12,7 +12,7 @@
 
   .active-link {
     background-color: mat-color($accent, 500) !important;
-    color: set-text-color(rgba($color: #ffffff, $alpha: 1)) !important;
+    color: set-text-color(mat-color($accent, 500)) !important;
     border-bottom: 2px thin mat-color($primary, 600);
     border-top: 2px thin mat-color($primary, 600);
   }

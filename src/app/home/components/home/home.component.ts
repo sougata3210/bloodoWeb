@@ -69,6 +69,9 @@ export class HomeComponent extends BaseComponent implements OnInit, OnDestroy {
       emailId: 'aloketewary@gmail.com',
       profilePic: 'likn'
     };
+    if (this.router.url.endsWith('/home')) {
+      this.router.navigateByUrl(`/home/dashboard`);
+    }
   }
 
   ngOnDestroy(): void {

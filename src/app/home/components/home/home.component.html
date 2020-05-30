@@ -18,8 +18,8 @@
       <div fxLayout="column" fxLayoutAlign="center start" fxLayoutGap="10px" class="p-l-10 p-t-10 p-b-10">
         <div fxLayout="row" fxLayoutAlign="start center">
           <img class="profile-icon-dark" [src]="'../assets/images/custom/avatar_circle_grey_64dp.png'"
-          onerror="this.src='../assets/images/custom/avatar_circle_grey_64dp.png';this.onerror='';"
-          [alt]="userProfile?.name">
+            onerror="this.src='../assets/images/custom/avatar_circle_grey_64dp.png';this.onerror='';"
+            [alt]="userProfile?.name">
           <span class="spacer"></span>
           <button class="profile-menu" mat-icon-button #menuTrigger="matMenuTrigger" (click)="menuTrigger.openMenu()"
             [mat-menu-trigger-for]="profile">
@@ -45,10 +45,12 @@
         </div>
       </div>
       <div class="p-l-10 p-r-10">
-        <button mat-raised-button [color]="isDarkTheme ? 'accent' :'primary'" class="flex-full">
-          <span class="school-font size-16 weight-400">Request Blood</span>
-          <span class="spacer"></span>
-          <mat-icon svgIcon="plus"></mat-icon>
+        <button mat-raised-button [color]="isDarkTheme ? 'warn' :'primary'" class="flex-full">
+          <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" fxFill>
+            <span class="school-font size-16 weight-400">Request Blood</span>
+            <span class="spacer"></span>
+            <mat-icon svgIcon="plus"></mat-icon>
+          </div>
         </button>
       </div>
 
@@ -61,8 +63,8 @@
                 <mat-icon class="component-viewer-nav" matListIcon svgIcon="{{link.icon}}"></mat-icon>
                 <a matLine [matTooltip]="link.name" matTooltipPosition="after">
                   {{link.name}}</a>
-                <mat-icon *ngIf="!link.isShow">add</mat-icon>
-                <mat-icon *ngIf="link.isShow">remove</mat-icon>
+                <mat-icon *ngIf="!link.isShow" svgIcon="chevron-down"></mat-icon>
+                <mat-icon *ngIf="link.isShow" svgIcon="chevron-up">remove</mat-icon>
               </mat-list-item>
               <mat-divider></mat-divider>
               <span *ngIf="link.isShow">

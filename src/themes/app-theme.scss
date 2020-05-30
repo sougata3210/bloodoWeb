@@ -25,7 +25,7 @@ $general-typography: mat-typography-config(
   $body-1: mat-typography-level(14px, 18px, 400),
   $caption: mat-typography-level(10px, 18px, 400),
   $button: mat-typography-level(12px, 14px, 500),
-  $input: mat-typography-level(12px, 1.125, 400)
+  $input: mat-typography-level(12px, 1.125, 400),
 );
 
 // Be sure that you only ever include this mixin once!
@@ -52,6 +52,9 @@ $blooddo-app-theme: mat-light-theme($blooddo-app-primary, $blooddo-app-accent, $
   $blooddo-dark-warn: mat-palette($mat-deep-orange);
   $blooddo-dark-theme: mat-dark-theme($blooddo-dark-primary, $blooddo-dark-accent, $blooddo-dark-warn);
   @include angular-material-theme($blooddo-dark-theme);
+  // Using the $theme variable from the pre-built theme you can call the theming function
+  @include app-sidemenu($blooddo-dark-theme);
+  @include setMatColors($blooddo-dark-theme);
 }
 
 // Using the $theme variable from the pre-built theme you can call the theming function
